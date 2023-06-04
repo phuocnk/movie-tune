@@ -12,6 +12,14 @@ https://movie-tune.netlify.app/
 - MUI v5, styled component
 - React Testing Library, Jest 
 
+# Setup
+- Clone the project repository
+- Run command to install the project dependencies: `npm install` or `yarn`
+- Starts the development server: `npm run dev` or `yarn dev`
+- Runs the tests: `npm run test` or `yarn test`
+coverage: Runs the tests with coverage using Vitest.
+- Transpiles TypeScript files and builds the production-ready bundle:  `npm run build` or  `yarn build`
+
 # Screenshots
 
 ![image](https://github.com/phuocnk/movie-tune/assets/108504671/a8a1eec9-d0a8-4e60-b5a9-2126c19d949d)
