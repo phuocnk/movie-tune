@@ -6,15 +6,14 @@ import { Grid, Box, CircularProgress, Typography } from '@mui/material'
 import Img from 'src/components/LazyLoadImage/LazyLoadImage'
 import { useAppSelector } from 'src/hooks/hooks'
 import PosterFallback from 'src/assets/no-poster.png'
-import { Video, Crew, MovieData } from 'src/models/movie'
+import { Crew, MovieData } from 'src/models/movie'
 import dayjs from 'dayjs'
 
 export interface DetailsBannerProps {
-  video?: Video
   crew?: Crew[]
 }
 
-const DetailsBanner = ({ video, crew }: DetailsBannerProps) => {
+const DetailsBanner = ({ crew }: DetailsBannerProps) => {
   const { mediaType, id } = useParams()
   const { data, loading }: FetchResult<MovieData> = useFetch<MovieData>(`/${mediaType}/${id}`)
   const { url } = useAppSelector((state) => state.home)

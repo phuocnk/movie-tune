@@ -1,4 +1,4 @@
-import { MovieData, Video } from './movie'
+import { MovieData } from './movie'
 
 export interface MovieResponse {
   dates?: string
@@ -13,9 +13,4 @@ export interface TrendingResponse {
   results?: MovieData[]
   total_pages: number
   total_results: number
-}
-
-export interface VideoResponse {
-  id: number
-  results: Video[]
 }
