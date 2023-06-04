@@ -12,7 +12,7 @@ const Trending = () => {
   const { data, loading }: FetchResult<TrendingResponse> = useFetch<TrendingResponse>(`/trending/movie/${endpoint}`)
 
   return (
-    <Box mt={12}>
+    <Box>
       <CarouselHeader
         title='Trending'
         selectValue={endpoint}

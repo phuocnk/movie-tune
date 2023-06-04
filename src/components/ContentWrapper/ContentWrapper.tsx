@@ -6,7 +6,11 @@ export interface ContentWrapperProps {
 }
 
 const ContentWrapper = ({ children }: ContentWrapperProps) => {
-  return <Container maxWidth='lg'>{children}</Container>
+  return (
+    <Container maxWidth='lg' sx={{ marginTop: 12 }}>
+      {children}
+    </Container>
+  )
 }
 
 export default ContentWrapper
