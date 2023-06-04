@@ -1,6 +1,6 @@
 import { MovieData, Video } from './movie'
 
-export interface UpcomingResponse {
+export interface MovieResponse {
   dates?: string
   page: number
   results?: MovieData[]
