@@ -29,9 +29,12 @@ coverage: Runs the tests with coverage using Vitest.
 
 # Screenshots
 
-![image](https://github.com/phuocnk/movie-tune/assets/108504671/a8a1eec9-d0a8-4e60-b5a9-2126c19d949d)
-![image](https://github.com/phuocnk/movie-tune/assets/108504671/6d5d1f98-48b8-4fc3-8dde-ed94b7b980ed)
-![image](https://github.com/phuocnk/movie-tune/assets/108504671/d223f334-c53e-4a25-aa74-d6bafb5d6d1e)
+![image](https://github.com/phuocnk/movie-tune/assets/108504671/1c89f206-909a-42ca-8cce-5a9bb74425e6)
+
+![image](https://github.com/phuocnk/movie-tune/assets/108504671/469293c8-d011-42c3-9161-1c9c45e5c6d4)
+
+![image](https://github.com/phuocnk/movie-tune/assets/108504671/e729d27b-1992-40df-8838-7bbe6d235369)
+
 
 # Improvements
 
