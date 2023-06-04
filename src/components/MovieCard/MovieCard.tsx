@@ -7,7 +7,7 @@ import PosterFallback from 'src/assets/no-poster.png'
 
 export interface MovieCardProps {
   movie: MovieData
-  posterUrl: string
+  posterUrl?: string
   onClick: (id?: number | string) => void
 }
 function MovieCard({ movie, posterUrl, onClick }: MovieCardProps) {
@@ -20,7 +20,6 @@ function MovieCard({ movie, posterUrl, onClick }: MovieCardProps) {
         width: 125,
         cursor: 'pointer',
         flexShrink: 0,
-        
 
         [theme.breakpoints.up('md')]: {
           width: 'calc(25% - 15px)'

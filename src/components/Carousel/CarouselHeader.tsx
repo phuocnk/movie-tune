@@ -23,8 +23,7 @@ const CarouselHeader = ({ title, selectValue, onSelect, options }: CarouselHeade
       <Grid item>
         <Select
           size='small'
-          labelId='demo-simple-select-standard-label'
-          id='demo-simple-select-standard'
+          id='select-standard'
           value={selectValue}
           defaultValue={options?.[0].value || ''}
           onChange={(e) => onSelect && onSelect(e.target.value)}
