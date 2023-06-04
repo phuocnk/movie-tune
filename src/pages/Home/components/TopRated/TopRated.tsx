@@ -22,7 +22,7 @@ const TopRated = () => {
           { label: 'TV Shows', value: 'tv' }
         ]}
       />
-      <Carousel data={data?.results} loading={loading} />
+      <Carousel data={data?.results} loading={loading} endpoint={endpoint} />
     </Box>
   )
 }

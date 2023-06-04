@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom'
-import { useState } from 'react'
 
 import ContentWrapper from 'src/components/ContentWrapper'
 import useFetch, { FetchResult } from 'src/hooks/useFetch'
@@ -16,30 +15,19 @@ export interface DetailsBannerProps {
 }
 
 const DetailsBanner = ({ video, crew }: DetailsBannerProps) => {
-  const [show, setShow] = useState(false)
-  const [videoId, setVideoId] = useState(null)
-
   const { mediaType, id } = useParams()
   const { data, loading }: FetchResult<MovieData> = useFetch<MovieData>(`/${mediaType}/${id}`)
   const { url } = useAppSelector((state) => state.home)
 
-  const _genres = data?.genres?.map((g) => g.id)
-
   const director = crew?.filter((f) => f.job === 'Director') || []
   const writer = crew?.filter((f) => f.job === 'Screenplay' || f.job === 'Story' || f.job === 'Writer') || []
-
-  const toHoursAndMinutes = (totalMinutes: number) => {
-    const hours = Math.floor(totalMinutes / 60)
-    const minutes = totalMinutes % 60
-    return `${hours}h${minutes > 0 ? ` ${minutes}m` : ''}`
-  }
 
   console.log('data: ', data)
 
   if (loading)
     return (
       <ContentWrapper>
-        <Box>
+        <Box display='flex' justifyContent='center'>
           <CircularProgress />
         </Box>
       </ContentWrapper>
@@ -75,16 +63,17 @@ const DetailsBanner = ({ video, crew }: DetailsBannerProps) => {
               {data.tagline}
             </Typography>
           </Box>
-          <Box width={'100%'}>
-            <Typography variant='h6' gutterBottom>
-              Overview
-            </Typography>
-          </Box>
-          <Box width={'100%'} mb={6}>
-            <Typography variant='body1' gutterBottom>
-              {data.overview}
-            </Typography>
-          </Box>
+          {data.overview && (
+            <Box width={'100%'}>
+              <Typography variant='h6' gutterBottom>
+                Overview
+              </Typography>
+
+              <Typography variant='body1' gutterBottom>
+                {data.overview}
+              </Typography>
+            </Box>
+          )}
           <Grid container rowSpacing={4}>
             {data.status && (
               <Grid item xs>
