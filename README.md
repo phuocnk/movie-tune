@@ -17,7 +17,6 @@ https://movie-tune.netlify.app/
 - Run command to install the project dependencies: `npm install` or `yarn`
 - Starts the development server: `npm run dev` or `yarn dev`
 - Runs the tests: `npm run test` or `yarn test`
-coverage: Runs the tests with coverage using Vitest.
 - Transpiles TypeScript files and builds the production-ready bundle:  `npm run build` or  `yarn build`
 
 # Features
