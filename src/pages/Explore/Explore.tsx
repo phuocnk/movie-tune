@@ -40,7 +40,6 @@ const Explore = () => {
 
   const fetchNextPageData = () => {
     fetchDataFromApi(`/discover/${mediaType}?page=${pageNum}`, filters).then((res) => {
-      console.log('fetchNextPageData', data)
       if (data?.results) {
         setData({
           ...data,
@@ -66,10 +65,8 @@ const Explore = () => {
     const {
       target: { value, name }
     } = event
-    console.log('value: ', name, value)
 
     if (name === 'sortby') {
-      console.log('sortby: ', value)
       setSortby(value)
       if (value !== '') {
         filters.sort_by = value
@@ -78,7 +75,6 @@ const Explore = () => {
       }
     }
     if (name === 'genres') {
-      console.log('genres: ', value)
       setGenre(value)
       if (!value.includes('')) {
         filters.with_genres = value.join(',')
@@ -86,8 +82,6 @@ const Explore = () => {
         delete filters.with_genres
       }
     }
-
-    console.log('filters: ', filters)
 
     setPageNum(1)
     fetchInitialData()
