@@ -7,22 +7,20 @@ import Details from 'src/pages/Details'
 import Explore from 'src/pages/Explore'
 import Home from 'src/pages/Home'
 import SearchResult from 'src/pages/SearchResult'
-import { useAppDispatch, useAppSelector } from './hooks/hooks'
+import { useAppDispatch } from './hooks/hooks'
 import { fetchDataFromApi } from './common/utils/api'
 import { getApiConfiguration, getGenres } from './store/homeSlice'
 import { Genres, GenresArray, GradesFlat } from './models/genres'
 
 function App() {
   const dispatch = useAppDispatch()
-  const { url } = useAppSelector((state) => state.home)
-  console.log(url)
 
   useEffect(() => {
-    apiTesting()
+    getConfig()
     genresCall()
   }, [])
 
-  const apiTesting = () => {
+  const getConfig = () => {
     fetchDataFromApi('/configuration').then((res) => {
       const url = {
         backdrop: res.images.secure_base_url + 'original',

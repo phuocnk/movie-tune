@@ -21,8 +21,6 @@ const DetailsBanner = ({ crew }: DetailsBannerProps) => {
   const director = crew?.filter((f) => f.job === 'Director') || []
   const writer = crew?.filter((f) => f.job === 'Screenplay' || f.job === 'Story' || f.job === 'Writer') || []
 
-  console.log('data: ', data)
-
   if (loading)
     return (
       <ContentWrapper>

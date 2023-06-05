@@ -20,7 +20,6 @@ const SearchResult = () => {
     setLoading(true)
     fetchDataFromApi(`/search/multi?query=${query}&page=${pageNum}`).then((res) => {
       setData(res)
-      console.log('res: ', res)
       setPageNum((prev) => prev + 1)
       setLoading(false)
     })
