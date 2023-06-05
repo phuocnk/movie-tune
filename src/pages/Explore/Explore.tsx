@@ -4,11 +4,21 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 
 import ContentWrapper from 'src/components/ContentWrapper'
 import useFetch from 'src/hooks/useFetch'
-import { Genres, GenresArray } from 'src/models/genres'
+import { GenresArray } from 'src/models/genres'
 import { fetchDataFromApi } from 'src/common/utils/api'
 import MovieCard from 'src/components/MovieCard/MovieCard'
 import { useAppSelector } from 'src/hooks/hooks'
-import { Box, Typography, CircularProgress, Grid, Select, MenuItem, FormControl, InputLabel } from '@mui/material'
+import {
+  Box,
+  Typography,
+  CircularProgress,
+  Grid,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent
+} from '@mui/material'
 
 import { SORT_OPTIONS } from './constants'
 import { FilterProps, PageData } from './types'
@@ -23,8 +33,8 @@ const Explore = () => {
   const [data, setData] = useState<PageData | null>(null)
   const [pageNum, setPageNum] = useState(1)
   const [loading, setLoading] = useState(false)
-  const [genre, setGenre] = useState<Genres | null>(null)
-  const [sortby, setSortby] = useState(null)
+  const [genre, setGenre] = useState<number[]>([])
+  const [sortby, setSortby] = useState<string>('')
 
   const genreListRes = useFetch<GenresArray>(`/genre/${mediaType}/list`)
   const genresList = genreListRes?.data?.genres
@@ -56,36 +66,34 @@ const Explore = () => {
     filters = {}
     setData(null)
     setPageNum(1)
-    setSortby(null)
-    setGenre(null)
+    setSortby('')
+    setGenre([])
     fetchInitialData()
   }, [mediaType])
 
-  const onChange = (event: any) => {
-    const {
-      target: { value, name }
-    } = event
+  const handleSortbyChanged = (event: SelectChangeEvent<string>) => {
+    const value = event.target.value
 
-    if (name === 'sortby') {
-      setSortby(value)
-      if (value !== '') {
-        filters.sort_by = value
-      } else {
-        delete filters.sort_by
-      }
-    }
-    if (name === 'genres') {
-      setGenre(value)
-      if (!value.includes('')) {
-        filters.with_genres = value.join(',')
-      } else {
-        delete filters.with_genres
-      }
-    }
+    setSortby(value)
+    if (value === '') delete filters.sort_by
+    else filters.sort_by = value
 
     setPageNum(1)
     fetchInitialData()
   }
+
+  const handleGenreChanged = (event: SelectChangeEvent<number[]>) => {
+    const value = event.target.value as number[]
+
+    setGenre(value)
+
+    if (value.length === 0) delete filters.with_genres
+    else filters.with_genres = value.join(',')
+
+    setPageNum(1)
+    fetchInitialData()
+  }
+
   return (
     <ContentWrapper>
       <Grid container mb={4} direction='row' justifyContent='space-between' spacing={1}>
@@ -102,8 +110,8 @@ const Explore = () => {
               name='genres'
               multiple
               size='small'
-              value={genre || []}
-              onChange={onChange}
+              value={genre}
+              onChange={handleGenreChanged}
               placeholder='Select genres'
             >
               {genresList?.map((genre) => (
@@ -118,8 +126,8 @@ const Explore = () => {
             <Select
               id='sortby'
               name='sortby'
-              value={sortby || ''}
-              onChange={onChange}
+              value={sortby}
+              onChange={handleSortbyChanged}
               size='small'
               placeholder='Sort by'
             >
