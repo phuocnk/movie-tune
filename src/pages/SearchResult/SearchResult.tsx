@@ -72,7 +72,7 @@ const SearchResult = () => {
         next={fetchNextPageData}
         hasMore={pageNum <= data?.total_pages}
         loader={<CircularProgress />}
-        style={{ display: 'flex', flexWrap: 'wrap', gap: 20, justifyContent: 'space-around' }}
+        style={{ display: 'flex', flexWrap: 'wrap', gap: 20, justifyContent: 'space-around', overflowY: 'hidden' }}
       >
         {data?.results.map((item) => {
           if (item.media_type === 'person') return

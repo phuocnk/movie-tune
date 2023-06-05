@@ -158,7 +158,14 @@ const Explore = () => {
               next={fetchNextPageData}
               hasMore={pageNum <= (data?.total_pages || 0)}
               loader={<CircularProgress />}
-              style={{ display: 'flex', flexWrap: 'wrap', gap: 20, overflow: 'hidden', justifyContent: 'space-around' }}
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: 20,
+                overflow: 'hidden',
+                justifyContent: 'space-around',
+                overflowY: 'hidden'
+              }}
             >
               {data?.results?.map((item) => {
                 if (item.media_type === 'person') return
